@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Logs
 logs
 *.log
@@ -22,3 +23,38 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+=======
+# Dependências
+node_modules/
+.pnp
+.pnp.js
+
+# Build e Produção
+dist/
+dist-ssr/
+build/
+
+# Logs e Cache
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.eslintcache
+.vite/
+
+# Testes e Cobertura (Vitest / Jest)
+coverage/
+.vitest/
+
+# Variáveis de Ambiente
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDEs e Sistema Operacional
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+>>>>>>> 57c783e81c405ba4a931dcf3e1839b7aa6781ab8
