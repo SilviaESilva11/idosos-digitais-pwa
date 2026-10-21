@@ -1,27 +1,22 @@
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[codz]
-*$py.class
+# Dependências do Node
+node_modules/
+/.pnp
+.pnp.js
 
-# C extensions
-*.so
-
-# Distribution / packaging
-.Python
-build/
-develop-eggs/
+# Arquivos de Build
 dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-share/python-wheels/
-*.egg-info/
+dist-ssr/
+*.local
+
+# Logs e Arquivos temporários
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 .installed.cfg
 *.egg
 MANIFEST
