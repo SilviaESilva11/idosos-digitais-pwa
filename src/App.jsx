@@ -6,15 +6,11 @@ export default function App() {
 
   const CPF_ALVO = '12345678900';
 
-  // Container principal com isolamento de layout rigoroso
+  // Container principal padronizado via CSS Grid para forçar renderização idêntica no Edge
   const containerStyle = {
     fontFamily: 'Arial, sans-serif',
     width: '380px',
     height: '620px',
-    minWidth: '380px',
-    minHeight: '620px',
-    maxWidth: '380px',
-    maxHeight: '620px',
     margin: '20px auto',
     border: '2px solid #0d2948',
     borderRadius: '16px',
@@ -23,11 +19,12 @@ export default function App() {
     boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
     boxSizing: 'border-box',
     WebkitBoxSizing: 'border-box',
-    MozBoxSizing: 'border-box',
+    msBoxSizing: 'border-box',
     display: 'grid',
-    gridTemplateRows: '70px 505px 45px',
-    position: 'relative',
+    gridTemplateRows: '70px 505px 45px', // Três divisões matemáticas exatas
+    gridTemplateColumns: '100%',
     WebkitTextSizeAdjust: '100%',
+    msTextSizeAdjust: '100%', // Bloqueia redimensionamento de fonte do Edge
     textSizeAdjust: '100%'
   };
 
@@ -58,7 +55,6 @@ export default function App() {
     backgroundColor: '#ffffff',
     boxSizing: 'border-box',
     height: '505px',
-    maxHeight: '505px',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
@@ -120,13 +116,13 @@ export default function App() {
 
   return (
     <div style={containerStyle}>
-      {/* Cabeçalho Fixo */}
+      {/* Cabeçalho Fixo (70px) */}
       <header style={headerStyle}>
         <h1 style={{ margin: 0, fontSize: '1.3rem', fontWeight: 'bold', lineHeight: '1.2' }}>Idosos Digitais</h1>
         <p style={{ margin: '2px 0 0', color: '#facc15', fontSize: '0.85rem' }}>Associação de Taubaté</p>
       </header>
 
-      {/* TELA 1: Identificação do Idoso */}
+      {/* TELA 1: Identificação do Idoso (505px) */}
       {etapa === 1 && (
         <main style={bodyStyle}>
           <div>
@@ -158,7 +154,7 @@ export default function App() {
         </main>
       )}
 
-      {/* TELA 2: Confirmar Presença */}
+      {/* TELA 2: Confirmar Presença (505px) */}
       {etapa === 2 && (
         <main style={bodyStyle}>
           <div>
@@ -184,7 +180,7 @@ export default function App() {
         </main>
       )}
 
-      {/* TELA 3: Comprovante de Presença */}
+      {/* TELA 3: Comprovante de Presença (505px) */}
       {etapa === 3 && (
         <main style={bodyStyle}>
           <div>
@@ -237,7 +233,7 @@ export default function App() {
         </main>
       )}
 
-      {/* Rodapé Fixo */}
+      {/* Rodapé Fixo (45px) */}
       <footer style={footerStyle}>
         Associação de Apoio à Terceira Idade
       </footer>
