@@ -4,9 +4,6 @@ export default function App() {
   const [etapa, setEtapa] = useState(1);
   const [cpf, setCpf] = useState('');
 
-  // CPF correto da Dona Maria
-  const CPF_DONA_MARIA = '123.456.789-00';
-
   const containerStyle = {
     fontFamily: 'Arial, sans-serif',
     width: '100%',
@@ -61,14 +58,16 @@ export default function App() {
   };
 
   const handleEntrar = () => {
-    const cpfLimpo = cpf.trim();
-    
-    if (!cpfLimpo) {
+    // Remove pontos, traços e espaços digitados
+    const cpfApenasNumeros = cpf.replace(/\D/g, '');
+
+    if (!cpfApenasNumeros) {
       alert('Por favor, digite o seu CPF para entrar.');
       return;
     }
 
-    if (cpfLimpo === CPF_DONA_MARIA) {
+    // Aceita 123.456.789-00 ou 12345678900
+    if (cpfApenasNumeros === '12345678900') {
       setEtapa(2);
     } else {
       alert('CPF não encontrado. Utilize o CPF cadastrado: 123.456.789-00');
