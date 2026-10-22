@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
+import { HashRouter, Routes, Route, useNavigate } from 'react-router-dom';
 
 function Home() {
   const navigate = useNavigate();
@@ -107,12 +107,12 @@ function Servicos() {
 
 export default function App() {
   return (
-    <BrowserRouter basename="/idosos-digitais-pwa">
+    <HashRouter>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/atendimento" element={<Atendimento />} />
         <Route path="/servicos" element={<Servicos />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
