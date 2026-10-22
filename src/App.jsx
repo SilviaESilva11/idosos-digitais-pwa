@@ -4,14 +4,13 @@ export default function App() {
   const [etapa, setEtapa] = useState(1);
   const [cpf, setCpf] = useState('');
 
-  // CPF padrão esperado (somente números)
   const CPF_ALVO = '12345678900';
 
   const containerStyle = {
     fontFamily: 'Arial, sans-serif',
-    width: '100%',
-    maxWidth: '380px',
+    width: '380px',
     height: '620px',
+    maxWidth: '100%',
     margin: '20px auto',
     border: '2px solid #0d2948',
     borderRadius: '16px',
@@ -21,7 +20,8 @@ export default function App() {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
-    boxSizing: 'border-box'
+    boxSizing: 'border-box',
+    WebkitBoxSizing: 'border-box'
   };
 
   const headerStyle = {
@@ -29,7 +29,9 @@ export default function App() {
     color: '#ffffff',
     textAlign: 'center',
     padding: '16px 10px',
-    flexShrink: 0
+    flexShrink: 0,
+    height: '70px',
+    boxSizing: 'border-box'
   };
 
   const footerStyle = {
@@ -39,17 +41,20 @@ export default function App() {
     padding: '12px',
     fontWeight: 'bold',
     fontSize: '0.9rem',
-    flexShrink: 0
+    flexShrink: 0,
+    height: '45px',
+    boxSizing: 'border-box'
   };
 
   const bodyStyle = {
     padding: '20px 16px',
     backgroundColor: '#ffffff',
-    flex: 1,
+    flex: '1 1 auto',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    boxSizing: 'border-box'
+    boxSizing: 'border-box',
+    overflowY: 'auto'
   };
 
   const cardStyle = {
@@ -57,11 +62,27 @@ export default function App() {
     borderRadius: '12px',
     padding: '14px',
     marginBottom: '16px',
-    backgroundColor: '#ffffff'
+    backgroundColor: '#ffffff',
+    boxSizing: 'border-box'
+  };
+
+  const inputStyle = {
+    width: '100%',
+    padding: '12px',
+    fontSize: '1.1rem',
+    fontWeight: 'bold',
+    color: '#000000',
+    backgroundColor: '#eff6ff',
+    borderRadius: '8px',
+    border: '2px solid #0d2948',
+    boxSizing: 'border-box',
+    marginBottom: '16px',
+    WebkitAppearance: 'none',
+    appearance: 'none',
+    outline: 'none'
   };
 
   const handleEntrar = () => {
-    // Remove qualquer caractere que NÃO seja número (pontos, traços, espaços)
     const apenasNumeros = cpf.replace(/\D/g, '');
 
     if (!apenasNumeros) {
@@ -69,7 +90,6 @@ export default function App() {
       return;
     }
 
-    // Compara apenas a sequência numérica
     if (apenasNumeros === CPF_ALVO) {
       setEtapa(2);
     } else {
@@ -82,7 +102,7 @@ export default function App() {
       {/* Cabeçalho Fixo */}
       <header style={headerStyle}>
         <h1 style={{ margin: 0, fontSize: '1.3rem', fontWeight: 'bold' }}>Idosos Digitais</h1>
-        <p style={{ margin: '4px 0 0', color: '#facc15', fontSize: '0.9rem' }}>Associação de Taubaté</p>
+        <p style={{ margin: '2px 0 0', color: '#facc15', fontSize: '0.85rem' }}>Associação de Taubaté</p>
       </header>
 
       {/* TELA 1: Identificação do Idoso */}
@@ -106,18 +126,7 @@ export default function App() {
             placeholder="123.456.789-00"
             value={cpf}
             onChange={(e) => setCpf(e.target.value)}
-            style={{
-              width: '100%',
-              padding: '12px',
-              fontSize: '1.1rem',
-              fontWeight: 'bold',
-              color: '#000000',
-              borderRadius: '8px',
-              border: '2px solid #0d2948',
-              boxSizing: 'border-box',
-              marginBottom: '16px',
-              backgroundColor: '#eff6ff'
-            }}
+            style={inputStyle}
           />
 
           <button 
@@ -131,7 +140,8 @@ export default function App() {
               color: '#ffffff',
               border: 'none',
               borderRadius: '8px',
-              cursor: 'pointer'
+              cursor: 'pointer',
+              WebkitAppearance: 'none'
             }}
           >
             Entrar na Associação
@@ -168,7 +178,8 @@ export default function App() {
               color: '#ffffff',
               border: 'none',
               borderRadius: '8px',
-              cursor: 'pointer'
+              cursor: 'pointer',
+              WebkitAppearance: 'none'
             }}
           >
             ✓ Confirmar Minha Presença
@@ -228,7 +239,8 @@ export default function App() {
               color: '#ffffff',
               border: 'none',
               borderRadius: '8px',
-              cursor: 'pointer'
+              cursor: 'pointer',
+              WebkitAppearance: 'none'
             }}
           >
             Voltar ao Início / Sair
