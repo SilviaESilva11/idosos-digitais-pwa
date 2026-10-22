@@ -31,7 +31,6 @@ export default function App() {
     right: 0,
     height: '70px',
     backgroundColor: '#0d2948',
-    color: '#ffffff',
     textAlign: 'center',
     padding: '12px 10px',
     boxSizing: 'border-box'
@@ -124,12 +123,12 @@ export default function App() {
 
   return (
     <div style={containerStyle} role="application" aria-label="Aplicativo Idosos Digitais">
-      {/* Cabeçalho Fixo - Texto explicitamente BRANCO */}
+      {/* Cabeçalho Fixo - Cor branca forçada em cada elemento */}
       <header style={headerStyle}>
-        <h1 style={{ margin: 0, fontSize: '1.3rem', fontWeight: 'bold', lineHeight: '1.2', color: '#ffffff' }}>
+        <h1 style={{ margin: 0, fontSize: '1.3rem', fontWeight: 'bold', lineHeight: '1.2', color: '#ffffff', WebkitTextFillColor: '#ffffff' }}>
           Idosos Digitais
         </h1>
-        <p style={{ margin: '2px 0 0', color: '#facc15', fontSize: '0.85rem', fontWeight: 'bold' }}>
+        <p style={{ margin: '2px 0 0', color: '#facc15', WebkitTextFillColor: '#facc15', fontSize: '0.85rem', fontWeight: 'bold' }}>
           Associação de Taubaté
         </p>
       </header>
@@ -138,17 +137,17 @@ export default function App() {
       {etapa === 1 && (
         <main style={bodyStyle} aria-live="polite">
           <div>
-            <h2 style={{ fontSize: '1.2rem', color: '#000000', marginTop: 0, marginBottom: '12px' }}>
+            <h2 style={{ fontSize: '1.2rem', color: '#000000', WebkitTextFillColor: '#000000', marginTop: 0, marginBottom: '12px' }}>
               Identificação do Idoso
             </h2>
             
             <div style={{ ...cardStyle, marginBottom: '16px' }}>
-              <h3 style={{ margin: '0 0 6px', color: '#0d2948', fontSize: '1.05rem' }}>Oficina de Hoje</h3>
-              <p style={{ margin: '4px 0', fontSize: '0.9rem', color: '#000000' }}><strong>Atividade:</strong> Inclusão Digital Prática</p>
-              <p style={{ margin: '4px 0', fontSize: '0.9rem', color: '#000000' }}><strong>Horário:</strong> 14:00 às 15:30</p>
+              <h3 style={{ margin: '0 0 6px', color: '#0d2948', WebkitTextFillColor: '#0d2948', fontSize: '1.05rem' }}>Oficina de Hoje</h3>
+              <p style={{ margin: '4px 0', fontSize: '0.9rem', color: '#000000', WebkitTextFillColor: '#000000' }}><strong>Atividade:</strong> Inclusão Digital Prática</p>
+              <p style={{ margin: '4px 0', fontSize: '0.9rem', color: '#000000', WebkitTextFillColor: '#000000' }}><strong>Horário:</strong> 14:00 às 15:30</p>
             </div>
 
-            <label htmlFor="input-cpf" style={{ display: 'block', fontWeight: 'bold', marginBottom: '6px', fontSize: '1rem', color: '#000000' }}>
+            <label htmlFor="input-cpf" style={{ display: 'block', fontWeight: 'bold', marginBottom: '6px', fontSize: '1rem', color: '#000000', WebkitTextFillColor: '#000000' }}>
               Digite seu CPF:
             </label>
             <input 
@@ -173,18 +172,18 @@ export default function App() {
       {etapa === 2 && (
         <main style={bodyStyle} aria-live="polite">
           <div>
-            <h2 style={{ fontSize: '1.2rem', color: '#000000', marginTop: 0, marginBottom: '12px' }}>
+            <h2 style={{ fontSize: '1.2rem', color: '#000000', WebkitTextFillColor: '#000000', marginTop: 0, marginBottom: '12px' }}>
               Olá, Dona Maria!
             </h2>
             
             <div style={{ ...cardStyle, borderColor: '#0d2948', borderWidth: '2px', marginBottom: '16px' }}>
-              <h3 style={{ margin: '0 0 6px', color: '#0d2948', fontSize: '1.05rem' }}>Oficina do Dia</h3>
-              <p style={{ margin: '4px 0', fontSize: '0.9rem', color: '#000000' }}><strong>Atividade:</strong> Redes Sociais e Segurança</p>
-              <p style={{ margin: '4px 0', fontSize: '0.9rem', color: '#000000' }}><strong>Horário:</strong> 14:00 às 15:30</p>
-              <p style={{ margin: '4px 0', fontSize: '0.9rem', color: '#000000' }}><strong>Local:</strong> Sala de Informática</p>
+              <h3 style={{ margin: '0 0 6px', color: '#0d2948', WebkitTextFillColor: '#0d2948', fontSize: '1.05rem' }}>Oficina do Dia</h3>
+              <p style={{ margin: '4px 0', fontSize: '0.9rem', color: '#000000', WebkitTextFillColor: '#000000' }}><strong>Atividade:</strong> Redes Sociais e Segurança</p>
+              <p style={{ margin: '4px 0', fontSize: '0.9rem', color: '#000000', WebkitTextFillColor: '#000000' }}><strong>Horário:</strong> 14:00 às 15:30</p>
+              <p style={{ margin: '4px 0', fontSize: '0.9rem', color: '#000000', WebkitTextFillColor: '#000000' }}><strong>Local:</strong> Sala de Informática</p>
             </div>
 
-            <p style={{ textAlign: 'center', fontWeight: 'bold', fontSize: '0.95rem', margin: '12px 0', color: '#000000' }}>
+            <p style={{ textAlign: 'center', fontWeight: 'bold', fontSize: '0.95rem', margin: '12px 0', color: '#000000', WebkitTextFillColor: '#000000' }}>
               Toque no botão abaixo para marcar sua presença hoje:
             </p>
           </div>
@@ -195,13 +194,12 @@ export default function App() {
         </main>
       )}
 
-      {/* TELA 3: Comprovante de Presença (Cores corrigidas para BRANCO nos fundos escuros) */}
+      {/* TELA 3: Comprovante de Presença - Forçado com WebkitTextFillColor */}
       {etapa === 3 && (
         <main style={bodyStyle} aria-live="polite">
           <div>
             <div style={{
               backgroundColor: '#064e3b',
-              color: '#ffffff',
               borderRadius: '12px',
               padding: '14px 12px',
               textAlign: 'center',
@@ -219,26 +217,27 @@ export default function App() {
                 margin: '0 auto 8px',
                 fontSize: '1.3rem',
                 fontWeight: 'bold',
-                color: '#000000'
+                color: '#000000',
+                WebkitTextFillColor: '#000000'
               }}>
                 ✓
               </div>
-              <h2 style={{ margin: '0 0 4px', fontSize: '1.1rem', color: '#ffffff', fontWeight: 'bold' }}>
+              <h2 style={{ margin: '0 0 4px', fontSize: '1.1rem', color: '#ffffff', WebkitTextFillColor: '#ffffff', fontWeight: 'bold' }}>
                 Presença Confirmada!
               </h2>
-              <p style={{ margin: 0, fontSize: '0.85rem', color: '#ffffff', lineHeight: '1.3' }}>
+              <p style={{ margin: 0, fontSize: '0.85rem', color: '#ffffff', WebkitTextFillColor: '#ffffff', lineHeight: '1.3' }}>
                 Sua presença foi registrada na lista oficial.
               </p>
             </div>
 
             <div style={{ ...cardStyle, textAlign: 'left' }}>
-              <p style={{ margin: '4px 0', fontSize: '0.88rem', color: '#000000' }}>
+              <p style={{ margin: '4px 0', fontSize: '0.88rem', color: '#000000', WebkitTextFillColor: '#000000' }}>
                 <strong>Comprovante Nº:</strong> PRES-2026-1014
               </p>
-              <p style={{ margin: '4px 0', fontSize: '0.88rem', color: '#000000' }}>
+              <p style={{ margin: '4px 0', fontSize: '0.88rem', color: '#000000', WebkitTextFillColor: '#000000' }}>
                 <strong>Data:</strong> 14/10/2026 às 14:05
               </p>
-              <p style={{ margin: '4px 0', fontSize: '0.88rem', color: '#000000' }}>
+              <p style={{ margin: '4px 0', fontSize: '0.88rem', color: '#000000', WebkitTextFillColor: '#000000' }}>
                 <strong>Status:</strong> Registrado no Banco de Dados
               </p>
             </div>
