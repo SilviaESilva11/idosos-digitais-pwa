@@ -6,7 +6,6 @@ export default function App() {
 
   const CPF_ALVO = '12345678900';
 
-  // Container principal absolutamente travado (mantendo a estabilidade visual cross-browser)
   const containerStyle = {
     fontFamily: 'Arial, sans-serif',
     width: '380px',
@@ -71,7 +70,7 @@ export default function App() {
   const cardStyle = {
     border: '1px solid #cbd5e1',
     borderRadius: '12px',
-    padding: '12px',
+    padding: '14px',
     backgroundColor: '#ffffff',
     boxSizing: 'border-box'
   };
@@ -117,7 +116,6 @@ export default function App() {
     }
   };
 
-  // Suporte a tecla Enter no input de CPF
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
       handleEntrar();
@@ -126,10 +124,14 @@ export default function App() {
 
   return (
     <div style={containerStyle} role="application" aria-label="Aplicativo Idosos Digitais">
-      {/* Cabeçalho Fixo */}
+      {/* Cabeçalho Fixo - Texto explicitamente BRANCO */}
       <header style={headerStyle}>
-        <h1 style={{ margin: 0, fontSize: '1.3rem', fontWeight: 'bold', lineHeight: '1.2' }}>Idosos Digitais</h1>
-        <p style={{ margin: '2px 0 0', color: '#facc15', fontSize: '0.85rem' }}>Associação de Taubaté</p>
+        <h1 style={{ margin: 0, fontSize: '1.3rem', fontWeight: 'bold', lineHeight: '1.2', color: '#ffffff' }}>
+          Idosos Digitais
+        </h1>
+        <p style={{ margin: '2px 0 0', color: '#facc15', fontSize: '0.85rem', fontWeight: 'bold' }}>
+          Associação de Taubaté
+        </p>
       </header>
 
       {/* TELA 1: Identificação do Idoso */}
@@ -193,7 +195,7 @@ export default function App() {
         </main>
       )}
 
-      {/* TELA 3: Comprovante de Presença */}
+      {/* TELA 3: Comprovante de Presença (Cores corrigidas para BRANCO nos fundos escuros) */}
       {etapa === 3 && (
         <main style={bodyStyle} aria-live="polite">
           <div>
@@ -201,9 +203,9 @@ export default function App() {
               backgroundColor: '#064e3b',
               color: '#ffffff',
               borderRadius: '12px',
-              padding: '12px',
+              padding: '14px 12px',
               textAlign: 'center',
-              marginBottom: '12px',
+              marginBottom: '16px',
               boxSizing: 'border-box'
             }} role="status">
               <div style={{
@@ -214,23 +216,31 @@ export default function App() {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                margin: '0 auto 6px',
+                margin: '0 auto 8px',
                 fontSize: '1.3rem',
                 fontWeight: 'bold',
                 color: '#000000'
               }}>
                 ✓
               </div>
-              <h2 style={{ margin: '0 0 4px', fontSize: '1.05rem' }}>Presença Confirmada!</h2>
-              <p style={{ margin: 0, fontSize: '0.8rem', lineHeight: '1.2' }}>
+              <h2 style={{ margin: '0 0 4px', fontSize: '1.1rem', color: '#ffffff', fontWeight: 'bold' }}>
+                Presença Confirmada!
+              </h2>
+              <p style={{ margin: 0, fontSize: '0.85rem', color: '#ffffff', lineHeight: '1.3' }}>
                 Sua presença foi registrada na lista oficial.
               </p>
             </div>
 
-            <div style={cardStyle}>
-              <p style={{ margin: '3px 0', fontSize: '0.85rem', color: '#000000' }}><strong>Comprovante Nº:</strong> PRES-2026-1014</p>
-              <p style={{ margin: '3px 0', fontSize: '0.85rem', color: '#000000' }}><strong>Data:</strong> 14/10/2026 às 14:05</p>
-              <p style={{ margin: '3px 0', fontSize: '0.85rem', color: '#000000' }}><strong>Status:</strong> Registrado no Banco de Dados</p>
+            <div style={{ ...cardStyle, textAlign: 'left' }}>
+              <p style={{ margin: '4px 0', fontSize: '0.88rem', color: '#000000' }}>
+                <strong>Comprovante Nº:</strong> PRES-2026-1014
+              </p>
+              <p style={{ margin: '4px 0', fontSize: '0.88rem', color: '#000000' }}>
+                <strong>Data:</strong> 14/10/2026 às 14:05
+              </p>
+              <p style={{ margin: '4px 0', fontSize: '0.88rem', color: '#000000' }}>
+                <strong>Status:</strong> Registrado no Banco de Dados
+              </p>
             </div>
           </div>
 
