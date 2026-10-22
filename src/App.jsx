@@ -21,7 +21,8 @@ export default function App() {
     backgroundColor: '#ffffff',
     boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
     boxSizing: 'border-box',
-    position: 'relative'
+    position: 'relative',
+    colorScheme: 'light' // Força o navegador no modo privado a tratar a página como Light Mode
   };
 
   const headerStyle = {
@@ -44,6 +45,7 @@ export default function App() {
     height: '45px',
     backgroundColor: '#d1d5db',
     color: '#000000',
+    WebkitTextFillColor: '#000000',
     textAlign: 'center',
     padding: '12px',
     fontWeight: 'bold',
@@ -80,6 +82,7 @@ export default function App() {
     fontSize: '1.1rem',
     fontWeight: 'bold',
     color: '#000000',
+    WebkitTextFillColor: '#000000',
     backgroundColor: '#eff6ff',
     borderRadius: '8px',
     border: '2px solid #0d2948',
@@ -94,6 +97,7 @@ export default function App() {
     fontWeight: 'bold',
     backgroundColor: bg,
     color: '#ffffff',
+    WebkitTextFillColor: '#ffffff',
     border: 'none',
     borderRadius: '8px',
     cursor: 'pointer',
@@ -123,12 +127,12 @@ export default function App() {
 
   return (
     <div style={containerStyle} role="application" aria-label="Aplicativo Idosos Digitais">
-      {/* Cabeçalho Fixo - Cor branca forçada em cada elemento */}
+      {/* Cabeçalho Fixo - Cor branca imutável */}
       <header style={headerStyle}>
-        <h1 style={{ margin: 0, fontSize: '1.3rem', fontWeight: 'bold', lineHeight: '1.2', color: '#ffffff', WebkitTextFillColor: '#ffffff' }}>
+        <h1 style={{ margin: 0, fontSize: '1.3rem', fontWeight: 'bold', lineHeight: '1.2', color: '#ffffff !important', WebkitTextFillColor: '#ffffff' }}>
           Idosos Digitais
         </h1>
-        <p style={{ margin: '2px 0 0', color: '#facc15', WebkitTextFillColor: '#facc15', fontSize: '0.85rem', fontWeight: 'bold' }}>
+        <p style={{ margin: '2px 0 0', color: '#facc15 !important', WebkitTextFillColor: '#facc15', fontSize: '0.85rem', fontWeight: 'bold' }}>
           Associação de Taubaté
         </p>
       </header>
@@ -194,7 +198,7 @@ export default function App() {
         </main>
       )}
 
-      {/* TELA 3: Comprovante de Presença - Forçado com WebkitTextFillColor */}
+      {/* TELA 3: Comprovante de Presença */}
       {etapa === 3 && (
         <main style={bodyStyle} aria-live="polite">
           <div>
