@@ -22,7 +22,7 @@ export default function App() {
     boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
     boxSizing: 'border-box',
     position: 'relative',
-    colorScheme: 'light' // Força o navegador no modo privado a tratar a página como Light Mode
+    colorScheme: 'light'
   };
 
   const headerStyle = {
@@ -104,7 +104,9 @@ export default function App() {
     boxSizing: 'border-box'
   });
 
-  const handleEntrar = () => {
+  const handleEntrar = (e) => {
+    if (e) e.preventDefault(); // Previne o recarregamento da página ao enviar o formulário
+
     const apenasNumeros = cpf.replace(/\D/g, '');
 
     if (!apenasNumeros) {
@@ -119,56 +121,52 @@ export default function App() {
     }
   };
 
-  const handleKeyDown = (e) => {
-    if (e.key === 'Enter') {
-      handleEntrar();
-    }
-  };
-
   return (
     <div style={containerStyle} role="application" aria-label="Aplicativo Idosos Digitais">
-      {/* Cabeçalho Fixo - Cor branca imutável */}
+      {/* Cabeçalho Fixo */}
       <header style={headerStyle}>
-        <h1 style={{ margin: 0, fontSize: '1.3rem', fontWeight: 'bold', lineHeight: '1.2', color: '#ffffff !important', WebkitTextFillColor: '#ffffff' }}>
+        <h1 style={{ margin: 0, fontSize: '1.3rem', fontWeight: 'bold', lineHeight: '1.2', color: '#ffffff', WebkitTextFillColor: '#ffffff' }}>
           Idosos Digitais
         </h1>
-        <p style={{ margin: '2px 0 0', color: '#facc15 !important', WebkitTextFillColor: '#facc15', fontSize: '0.85rem', fontWeight: 'bold' }}>
+        <p style={{ margin: '2px 0 0', color: '#facc15', WebkitTextFillColor: '#facc15', fontSize: '0.85rem', fontWeight: 'bold' }}>
           Associação de Taubaté
         </p>
       </header>
 
-      {/* TELA 1: Identificação do Idoso */}
+      {/* TELA 1: Identificação do Idoso (Com formulário nativo para suporte total ao Enter) */}
       {etapa === 1 && (
         <main style={bodyStyle} aria-live="polite">
-          <div>
-            <h2 style={{ fontSize: '1.2rem', color: '#000000', WebkitTextFillColor: '#000000', marginTop: 0, marginBottom: '12px' }}>
-              Identificação do Idoso
-            </h2>
-            
-            <div style={{ ...cardStyle, marginBottom: '16px' }}>
-              <h3 style={{ margin: '0 0 6px', color: '#0d2948', WebkitTextFillColor: '#0d2948', fontSize: '1.05rem' }}>Oficina de Hoje</h3>
-              <p style={{ margin: '4px 0', fontSize: '0.9rem', color: '#000000', WebkitTextFillColor: '#000000' }}><strong>Atividade:</strong> Inclusão Digital Prática</p>
-              <p style={{ margin: '4px 0', fontSize: '0.9rem', color: '#000000', WebkitTextFillColor: '#000000' }}><strong>Horário:</strong> 14:00 às 15:30</p>
+          <form onSubmit={handleEntrar} style={{ display: 'flex', flexDirection: 'column', height: '100%', justifyContent: 'space-between' }}>
+            <div>
+              <h2 style={{ fontSize: '1.2rem', color: '#000000', WebkitTextFillColor: '#000000', marginTop: 0, marginBottom: '12px' }}>
+                Identificação do Idoso
+              </h2>
+              
+              <div style={{ ...cardStyle, marginBottom: '16px' }}>
+                <h3 style={{ margin: '0 0 6px', color: '#0d2948', WebkitTextFillColor: '#0d2948', fontSize: '1.05rem' }}>Oficina de Hoje</h3>
+                <p style={{ margin: '4px 0', fontSize: '0.9rem', color: '#000000', WebkitTextFillColor: '#000000' }}><strong>Atividade:</strong> Inclusão Digital Prática</p>
+                <p style={{ margin: '4px 0', fontSize: '0.9rem', color: '#000000', WebkitTextFillColor: '#000000' }}><strong>Horário:</strong> 14:00 às 15:30</p>
+              </div>
+
+              <label htmlFor="input-cpf" style={{ display: 'block', fontWeight: 'bold', marginBottom: '6px', fontSize: '1rem', color: '#000000', WebkitTextFillColor: '#000000' }}>
+                Digite seu CPF:
+              </label>
+              <input 
+                id="input-cpf"
+                type="text" 
+                placeholder="123.456.789-00"
+                value={cpf}
+                onChange={(e) => setCpf(e.target.value)}
+                style={inputStyle}
+                aria-label="Campo para digitar o CPF"
+                autoFocus
+              />
             </div>
 
-            <label htmlFor="input-cpf" style={{ display: 'block', fontWeight: 'bold', marginBottom: '6px', fontSize: '1rem', color: '#000000', WebkitTextFillColor: '#000000' }}>
-              Digite seu CPF:
-            </label>
-            <input 
-              id="input-cpf"
-              type="text" 
-              placeholder="123.456.789-00"
-              value={cpf}
-              onChange={(e) => setCpf(e.target.value)}
-              onKeyDown={handleKeyDown}
-              style={inputStyle}
-              aria-label="Campo para digitar o CPF"
-            />
-          </div>
-
-          <button onClick={handleEntrar} style={buttonStyle('#0d2948')}>
-            Entrar na Associação
-          </button>
+            <button type="submit" style={buttonStyle('#0d2948')}>
+              Entrar na Associação
+            </button>
+          </form>
         </main>
       )}
 
