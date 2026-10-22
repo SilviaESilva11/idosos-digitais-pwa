@@ -6,12 +6,15 @@ export default function App() {
 
   const CPF_ALVO = '12345678900';
 
-  // Container principal com Grid Rígido para forçar layout idêntico em qualquer navegador
+  // Container principal com isolamento de layout rigoroso
   const containerStyle = {
     fontFamily: 'Arial, sans-serif',
     width: '380px',
     height: '620px',
-    maxWidth: '100%',
+    minWidth: '380px',
+    minHeight: '620px',
+    maxWidth: '380px',
+    maxHeight: '620px',
     margin: '20px auto',
     border: '2px solid #0d2948',
     borderRadius: '16px',
@@ -20,8 +23,12 @@ export default function App() {
     boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
     boxSizing: 'border-box',
     WebkitBoxSizing: 'border-box',
+    MozBoxSizing: 'border-box',
     display: 'grid',
-    gridTemplateRows: '70px 505px 45px' // Estrutura matemática fixa
+    gridTemplateRows: '70px 505px 45px',
+    position: 'relative',
+    WebkitTextSizeAdjust: '100%',
+    textSizeAdjust: '100%'
   };
 
   const headerStyle = {
@@ -30,7 +37,8 @@ export default function App() {
     textAlign: 'center',
     padding: '12px 10px',
     boxSizing: 'border-box',
-    WebkitBoxSizing: 'border-box'
+    height: '70px',
+    overflow: 'hidden'
   };
 
   const footerStyle = {
@@ -41,15 +49,16 @@ export default function App() {
     fontWeight: 'bold',
     fontSize: '0.9rem',
     boxSizing: 'border-box',
-    WebkitBoxSizing: 'border-box'
+    height: '45px',
+    overflow: 'hidden'
   };
 
-  // Área central com dimensões e espaçamentos simétricos para as 3 telas
   const bodyStyle = {
     padding: '16px',
     backgroundColor: '#ffffff',
     boxSizing: 'border-box',
-    WebkitBoxSizing: 'border-box',
+    height: '505px',
+    maxHeight: '505px',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
@@ -61,8 +70,7 @@ export default function App() {
     borderRadius: '12px',
     padding: '12px',
     backgroundColor: '#ffffff',
-    boxSizing: 'border-box',
-    WebkitBoxSizing: 'border-box'
+    boxSizing: 'border-box'
   };
 
   const inputStyle = {
@@ -75,7 +83,6 @@ export default function App() {
     borderRadius: '8px',
     border: '2px solid #0d2948',
     boxSizing: 'border-box',
-    WebkitBoxSizing: 'border-box',
     WebkitAppearance: 'none',
     appearance: 'none',
     outline: 'none'
@@ -93,8 +100,7 @@ export default function App() {
     cursor: 'pointer',
     WebkitAppearance: 'none',
     appearance: 'none',
-    boxSizing: 'border-box',
-    WebkitBoxSizing: 'border-box'
+    boxSizing: 'border-box'
   });
 
   const handleEntrar = () => {
@@ -114,13 +120,13 @@ export default function App() {
 
   return (
     <div style={containerStyle}>
-      {/* Cabeçalho Fixo (70px) */}
+      {/* Cabeçalho Fixo */}
       <header style={headerStyle}>
-        <h1 style={{ margin: 0, fontSize: '1.3rem', fontWeight: 'bold' }}>Idosos Digitais</h1>
+        <h1 style={{ margin: 0, fontSize: '1.3rem', fontWeight: 'bold', lineHeight: '1.2' }}>Idosos Digitais</h1>
         <p style={{ margin: '2px 0 0', color: '#facc15', fontSize: '0.85rem' }}>Associação de Taubaté</p>
       </header>
 
-      {/* TELA 1: Identificação do Idoso (505px) */}
+      {/* TELA 1: Identificação do Idoso */}
       {etapa === 1 && (
         <main style={bodyStyle}>
           <div>
@@ -152,7 +158,7 @@ export default function App() {
         </main>
       )}
 
-      {/* TELA 2: Confirmar Presença (505px) */}
+      {/* TELA 2: Confirmar Presença */}
       {etapa === 2 && (
         <main style={bodyStyle}>
           <div>
@@ -178,7 +184,7 @@ export default function App() {
         </main>
       )}
 
-      {/* TELA 3: Comprovante de Presença (505px) */}
+      {/* TELA 3: Comprovante de Presença */}
       {etapa === 3 && (
         <main style={bodyStyle}>
           <div>
@@ -231,7 +237,7 @@ export default function App() {
         </main>
       )}
 
-      {/* Rodapé Fixo (45px) */}
+      {/* Rodapé Fixo */}
       <footer style={footerStyle}>
         Associação de Apoio à Terceira Idade
       </footer>
