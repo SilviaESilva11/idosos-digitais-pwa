@@ -4,6 +4,9 @@ export default function App() {
   const [etapa, setEtapa] = useState(1);
   const [cpf, setCpf] = useState('');
 
+  // CPF correto da Dona Maria
+  const CPF_DONA_MARIA = '123.456.789-00';
+
   const containerStyle = {
     fontFamily: 'Arial, sans-serif',
     width: '100%',
@@ -57,6 +60,21 @@ export default function App() {
     backgroundColor: '#ffffff'
   };
 
+  const handleEntrar = () => {
+    const cpfLimpo = cpf.trim();
+    
+    if (!cpfLimpo) {
+      alert('Por favor, digite o seu CPF para entrar.');
+      return;
+    }
+
+    if (cpfLimpo === CPF_DONA_MARIA) {
+      setEtapa(2);
+    } else {
+      alert('CPF não encontrado. Utilize o CPF cadastrado: 123.456.789-00');
+    }
+  };
+
   return (
     <div style={containerStyle}>
       {/* Cabeçalho Fixo */}
@@ -101,10 +119,7 @@ export default function App() {
           />
 
           <button 
-            onClick={() => {
-              if (cpf.trim() !== '') setEtapa(2);
-              else alert('Por favor, digite o seu CPF para entrar.');
-            }}
+            onClick={handleEntrar}
             style={{
               width: '100%',
               padding: '12px',
