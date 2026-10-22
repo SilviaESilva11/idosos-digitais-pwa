@@ -1,118 +1,202 @@
-import { HashRouter, Routes, Route, useNavigate } from 'react-router-dom';
-
-function Home() {
-  const navigate = useNavigate();
-  return (
-    <main style={{ padding: '2rem', textAlign: 'center' }}>
-      <h1>Associação de Apoio à Terceira Idade de Taubaté</h1>
-      <p style={{ fontSize: '1.25rem', fontWeight: 'bold' }}>
-        Bem-vindo(a) ao portal Idosos Digitais.
-      </p>
-      <button 
-        onClick={() => navigate('/atendimento')}
-        style={{
-          padding: '12px 24px',
-          fontSize: '1.25rem',
-          fontWeight: 'bold',
-          backgroundColor: '#0053a0',
-          color: '#ffffff',
-          border: '2px solid #000',
-          borderRadius: '8px',
-          cursor: 'pointer',
-          marginTop: '1.5rem'
-        }}
-      >
-        Iniciar Atendimento
-      </button>
-    </main>
-  );
-}
-
-function Atendimento() {
-  const navigate = useNavigate();
-  return (
-    <main style={{ padding: '2rem', maxWidth: '600px', margin: '0 auto' }}>
-      <h2>Atendimento ao Idoso</h2>
-      <p style={{ fontSize: '1.1rem' }}>Preencha os dados abaixo para solicitar suporte presencial ou remoto.</p>
-      <form onSubmit={(e) => { e.preventDefault(); navigate('/servicos'); }}>
-        <div style={{ marginBottom: '1rem', textAlign: 'left' }}>
-          <label htmlFor="nome" style={{ display: 'block', fontWeight: 'bold', marginBottom: '0.5rem' }}>Nome Completo:</label>
-          <input id="nome" type="text" style={{ width: '100%', padding: '10px', fontSize: '1rem', borderRadius: '4px', border: '1px solid #000' }} required />
-        </div>
-        <button 
-          type="submit"
-          style={{
-            padding: '12px 24px',
-            fontSize: '1.1rem',
-            fontWeight: 'bold',
-            backgroundColor: '#0053a0',
-            color: '#fff',
-            border: 'none',
-            borderRadius: '6px',
-            cursor: 'pointer',
-            marginRight: '1rem'
-          }}
-        >
-          Avançar para Serviços
-        </button>
-        <button 
-          type="button"
-          onClick={() => navigate('/')}
-          style={{
-            padding: '12px 24px',
-            fontSize: '1.1rem',
-            backgroundColor: '#ccc',
-            color: '#000',
-            border: 'none',
-            borderRadius: '6px',
-            cursor: 'pointer'
-          }}
-        >
-          Voltar
-        </button>
-      </form>
-    </main>
-  );
-}
-
-function Servicos() {
-  const navigate = useNavigate();
-  return (
-    <main style={{ padding: '2rem', textAlign: 'center' }}>
-      <h2>Serviços Disponíveis</h2>
-      <ul style={{ listStyle: 'none', padding: 0, fontSize: '1.2rem', lineHeight: '2rem' }}>
-        <li>📱 Oficinas de Uso do Smartphone</li>
-        <li>💻 Inclusão Digital e Internet Segura</li>
-        <li>📄 Auxílio com Documentos Digitais</li>
-      </ul>
-      <button 
-        onClick={() => navigate('/')}
-        style={{
-          padding: '12px 24px',
-          fontSize: '1.1rem',
-          fontWeight: 'bold',
-          backgroundColor: '#0053a0',
-          color: '#ffffff',
-          border: 'none',
-          borderRadius: '6px',
-          cursor: 'pointer',
-          marginTop: '1.5rem'
-        }}
-      >
-        Voltar ao Início
-      </button>
-    </main>
-  );
-}
+import { useState } from 'react';
 
 export default function App() {
+  const [etapa, setEtapa] = useState(1);
+  const [cpf, setCpf] = useState('123.456.789-00');
+
+  const containerStyle = {
+    fontFamily: 'Arial, sans-serif',
+    maxWidth: '400px',
+    margin: '20px auto',
+    border: '2px solid #0d2948',
+    borderRadius: '16px',
+    overflow: 'hidden',
+    backgroundColor: '#f8f9fa',
+    boxShadow: '0 4px 12px rgba(0,0,0,0.15)'
+  };
+
+  const headerStyle = {
+    backgroundColor: '#0d2948',
+    color: '#ffffff',
+    textAlign: 'center',
+    padding: '16px 10px'
+  };
+
+  const footerStyle = {
+    backgroundColor: '#d1d5db',
+    color: '#000000',
+    textAlign: 'center',
+    padding: '12px',
+    fontWeight: 'bold',
+    fontSize: '0.9rem'
+  };
+
+  const bodyStyle = {
+    padding: '20px 16px',
+    backgroundColor: '#ffffff'
+  };
+
+  const cardStyle = {
+    border: '1px solid #cbd5e1',
+    borderRadius: '12px',
+    padding: '16px',
+    marginBottom: '20px',
+    backgroundColor: '#ffffff'
+  };
+
   return (
-    <HashRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/atendimento" element={<Atendimento />} />
-        <Route path="/servicos" element={<Servicos />} />
-      </Routes>
-    </HashRouter>
+    <div style={containerStyle}>
+      {/* Cabeçalho Fixo em todas as telas */}
+      <header style={headerStyle}>
+        <h1 style={{ margin: 0, fontSize: '1.4rem', fontWeight: 'bold' }}>Idosos Digitais</h1>
+        <p style={{ margin: '4px 0 0', color: '#facc15', fontSize: '0.95rem' }}>Associação de Taubaté</p>
+      </header>
+
+      {/* TELA 1: Identificação do Idoso */}
+      {etapa === 1 && (
+        <main style={bodyStyle}>
+          <h2 style={{ fontSize: '1.3rem', color: '#000', marginTop: 0 }}>Identificação do Idoso</h2>
+          
+          <div style={cardStyle}>
+            <h3 style={{ margin: '0 0 8px', color: '#0d2948', fontSize: '1.1rem' }}>Oficina de Hoje</h3>
+            <p style={{ margin: '4px 0', fontSize: '0.95rem' }}><strong>Atividade:</strong> Inclusão Digital Prática</p>
+            <p style={{ margin: '4px 0', fontSize: '0.95rem' }}><strong>Horário:</strong> 14:00 às 15:30</p>
+          </div>
+
+          <label style={{ display: 'block', fontWeight: 'bold', marginBottom: '8px', fontSize: '1.05rem' }}>
+            Digite seu CPF:
+          </label>
+          <input 
+            type="text" 
+            value={cpf}
+            onChange={(e) => setCpf(e.target.value)}
+            style={{
+              width: '100%',
+              padding: '12px',
+              fontSize: '1.1rem',
+              borderRadius: '8px',
+              border: '2px solid #0d2948',
+              boxSizing: 'border-box',
+              marginBottom: '16px',
+              backgroundColor: '#eff6ff'
+            }}
+          />
+
+          <button 
+            onClick={() => setEtapa(2)}
+            style={{
+              width: '100%',
+              padding: '14px',
+              fontSize: '1.1rem',
+              fontWeight: 'bold',
+              backgroundColor: '#0d2948',
+              color: '#ffffff',
+              border: 'none',
+              borderRadius: '8px',
+              cursor: 'pointer'
+            }}
+          >
+            Entrar na Associação
+          </button>
+        </main>
+      )}
+
+      {/* TELA 2: Confirmar Presença */}
+      {etapa === 2 && (
+        <main style={bodyStyle}>
+          <h2 style={{ fontSize: '1.3rem', color: '#000', marginTop: 0 }}>Olá, Dona Maria!</h2>
+          
+          <div style={{ ...cardStyle, borderColor: '#0d2948', borderWidth: '2px' }}>
+            <h3 style={{ margin: '0 0 8px', color: '#0d2948', fontSize: '1.1rem' }}>Oficina do Dia</h3>
+            <p style={{ margin: '4px 0', fontSize: '0.95rem' }}><strong>Atividade:</strong> Redes Sociais e Segurança</p>
+            <p style={{ margin: '4px 0', fontSize: '0.95rem' }}><strong>Horário:</strong> 14:00 às 15:30</p>
+            <p style={{ margin: '4px 0', fontSize: '0.95rem' }}><strong>Local:</strong> Sala de Informática</p>
+          </div>
+
+          <p style={{ textAlign: 'center', fontWeight: 'bold', fontSize: '1.05rem', margin: '20px 0 16px' }}>
+            Toque no botão abaixo para marcar sua presença hoje:
+          </p>
+
+          <button 
+            onClick={() => setEtapa(3)}
+            style={{
+              width: '100%',
+              padding: '14px',
+              fontSize: '1.15rem',
+              fontWeight: 'bold',
+              backgroundColor: '#064e3b',
+              color: '#ffffff',
+              border: 'none',
+              borderRadius: '8px',
+              cursor: 'pointer'
+            }}
+          >
+            ✓ Confirmar Minha Presença
+          </button>
+        </main>
+      )}
+
+      {/* TELA 3: Comprovante de Presença */}
+      {etapa === 3 && (
+        <main style={bodyStyle}>
+          <div style={{
+            backgroundColor: '#064e3b',
+            color: '#ffffff',
+            borderRadius: '12px',
+            padding: '24px 16px',
+            textAlign: 'center',
+            marginBottom: '20px'
+          }}>
+            <div style={{
+              width: '60px',
+              height: '60px',
+              backgroundColor: '#eab308',
+              borderRadius: '50%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              margin: '0 auto 12px',
+              fontSize: '2rem',
+              fontWeight: 'bold',
+              color: '#000'
+            }}>
+              ✓
+            </div>
+            <h2 style={{ margin: '0 0 12px', fontSize: '1.3rem' }}>Presença Confirmada com Sucesso!</h2>
+            <p style={{ margin: 0, fontSize: '0.95rem', lineHeight: '1.3' }}>
+              Sua presença já está salva na lista oficial da Associação.
+            </p>
+          </div>
+
+          <div style={cardStyle}>
+            <p style={{ margin: '6px 0', fontSize: '0.95rem' }}><strong>Comprovante Nº:</strong> PRES-2026-1014</p>
+            <p style={{ margin: '6px 0', fontSize: '0.95rem' }}><strong>Data:</strong> 14/10/2026 às 14:05</p>
+            <p style={{ margin: '6px 0', fontSize: '0.95rem' }}><strong>Status:</strong> Registrado no Banco de Dados</p>
+          </div>
+
+          <button 
+            onClick={() => setEtapa(1)}
+            style={{
+              width: '100%',
+              padding: '14px',
+              fontSize: '1.1rem',
+              fontWeight: 'bold',
+              backgroundColor: '#0d2948',
+              color: '#ffffff',
+              border: 'none',
+              borderRadius: '8px',
+              cursor: 'pointer'
+            }}
+          >
+            Voltar ao Início / Sair
+          </button>
+        </main>
+      )}
+
+      {/* Rodapé Fixo */}
+      <footer style={footerStyle}>
+        Associação de Apoio à Terceira Idade
+      </footer>
+    </div>
   );
 }
