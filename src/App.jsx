@@ -2,24 +2,31 @@ import { useState } from 'react';
 
 export default function App() {
   const [etapa, setEtapa] = useState(1);
-  const [cpf, setCpf] = useState('123.456.789-00');
+  const [cpf, setCpf] = useState('');
 
   const containerStyle = {
     fontFamily: 'Arial, sans-serif',
-    maxWidth: '400px',
+    width: '100%',
+    maxWidth: '380px',
+    height: '620px',
     margin: '20px auto',
     border: '2px solid #0d2948',
     borderRadius: '16px',
     overflow: 'hidden',
-    backgroundColor: '#f8f9fa',
-    boxShadow: '0 4px 12px rgba(0,0,0,0.15)'
+    backgroundColor: '#ffffff',
+    boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    boxSizing: 'border-box'
   };
 
   const headerStyle = {
     backgroundColor: '#0d2948',
     color: '#ffffff',
     textAlign: 'center',
-    padding: '16px 10px'
+    padding: '16px 10px',
+    flexShrink: 0
   };
 
   const footerStyle = {
@@ -28,52 +35,61 @@ export default function App() {
     textAlign: 'center',
     padding: '12px',
     fontWeight: 'bold',
-    fontSize: '0.9rem'
+    fontSize: '0.9rem',
+    flexShrink: 0
   };
 
   const bodyStyle = {
     padding: '20px 16px',
-    backgroundColor: '#ffffff'
+    backgroundColor: '#ffffff',
+    flex: 1,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    boxSizing: 'border-box'
   };
 
   const cardStyle = {
     border: '1px solid #cbd5e1',
     borderRadius: '12px',
-    padding: '16px',
-    marginBottom: '20px',
+    padding: '14px',
+    marginBottom: '16px',
     backgroundColor: '#ffffff'
   };
 
   return (
     <div style={containerStyle}>
-      {/* Cabeçalho Fixo em todas as telas */}
+      {/* Cabeçalho Fixo */}
       <header style={headerStyle}>
-        <h1 style={{ margin: 0, fontSize: '1.4rem', fontWeight: 'bold' }}>Idosos Digitais</h1>
-        <p style={{ margin: '4px 0 0', color: '#facc15', fontSize: '0.95rem' }}>Associação de Taubaté</p>
+        <h1 style={{ margin: 0, fontSize: '1.3rem', fontWeight: 'bold' }}>Idosos Digitais</h1>
+        <p style={{ margin: '4px 0 0', color: '#facc15', fontSize: '0.9rem' }}>Associação de Taubaté</p>
       </header>
 
       {/* TELA 1: Identificação do Idoso */}
       {etapa === 1 && (
         <main style={bodyStyle}>
-          <h2 style={{ fontSize: '1.3rem', color: '#000', marginTop: 0 }}>Identificação do Idoso</h2>
+          <h2 style={{ fontSize: '1.2rem', color: '#000', marginTop: 0, marginBottom: '12px' }}>
+            Identificação do Idoso
+          </h2>
           
           <div style={cardStyle}>
-            <h3 style={{ margin: '0 0 8px', color: '#0d2948', fontSize: '1.1rem' }}>Oficina de Hoje</h3>
-            <p style={{ margin: '4px 0', fontSize: '0.95rem' }}><strong>Atividade:</strong> Inclusão Digital Prática</p>
-            <p style={{ margin: '4px 0', fontSize: '0.95rem' }}><strong>Horário:</strong> 14:00 às 15:30</p>
+            <h3 style={{ margin: '0 0 6px', color: '#0d2948', fontSize: '1.05rem' }}>Oficina de Hoje</h3>
+            <p style={{ margin: '4px 0', fontSize: '0.9rem' }}><strong>Atividade:</strong> Inclusão Digital Prática</p>
+            <p style={{ margin: '4px 0', fontSize: '0.9rem' }}><strong>Horário:</strong> 14:00 às 15:30</p>
           </div>
 
-          <label style={{ display: 'block', fontWeight: 'bold', marginBottom: '8px', fontSize: '1.05rem' }}>
+          <label style={{ display: 'block', fontWeight: 'bold', marginBottom: '6px', fontSize: '1rem' }}>
             Digite seu CPF:
           </label>
           <input 
             type="text" 
+            placeholder="123.456.789-00"
             value={cpf}
             onChange={(e) => setCpf(e.target.value)}
             style={{
               width: '100%',
               padding: '12px',
-              fontSize: '1.1rem',
+              fontSize: '1rem',
               borderRadius: '8px',
               border: '2px solid #0d2948',
               boxSizing: 'border-box',
@@ -83,11 +99,14 @@ export default function App() {
           />
 
           <button 
-            onClick={() => setEtapa(2)}
+            onClick={() => {
+              if (cpf.trim() !== '') setEtapa(2);
+              else alert('Por favor, digite o seu CPF para entrar.');
+            }}
             style={{
               width: '100%',
-              padding: '14px',
-              fontSize: '1.1rem',
+              padding: '12px',
+              fontSize: '1.05rem',
               fontWeight: 'bold',
               backgroundColor: '#0d2948',
               color: '#ffffff',
@@ -104,16 +123,18 @@ export default function App() {
       {/* TELA 2: Confirmar Presença */}
       {etapa === 2 && (
         <main style={bodyStyle}>
-          <h2 style={{ fontSize: '1.3rem', color: '#000', marginTop: 0 }}>Olá, Dona Maria!</h2>
+          <h2 style={{ fontSize: '1.2rem', color: '#000', marginTop: 0, marginBottom: '12px' }}>
+            Olá, Dona Maria!
+          </h2>
           
           <div style={{ ...cardStyle, borderColor: '#0d2948', borderWidth: '2px' }}>
-            <h3 style={{ margin: '0 0 8px', color: '#0d2948', fontSize: '1.1rem' }}>Oficina do Dia</h3>
-            <p style={{ margin: '4px 0', fontSize: '0.95rem' }}><strong>Atividade:</strong> Redes Sociais e Segurança</p>
-            <p style={{ margin: '4px 0', fontSize: '0.95rem' }}><strong>Horário:</strong> 14:00 às 15:30</p>
-            <p style={{ margin: '4px 0', fontSize: '0.95rem' }}><strong>Local:</strong> Sala de Informática</p>
+            <h3 style={{ margin: '0 0 6px', color: '#0d2948', fontSize: '1.05rem' }}>Oficina do Dia</h3>
+            <p style={{ margin: '4px 0', fontSize: '0.9rem' }}><strong>Atividade:</strong> Redes Sociais e Segurança</p>
+            <p style={{ margin: '4px 0', fontSize: '0.9rem' }}><strong>Horário:</strong> 14:00 às 15:30</p>
+            <p style={{ margin: '4px 0', fontSize: '0.9rem' }}><strong>Local:</strong> Sala de Informática</p>
           </div>
 
-          <p style={{ textAlign: 'center', fontWeight: 'bold', fontSize: '1.05rem', margin: '20px 0 16px' }}>
+          <p style={{ textAlign: 'center', fontWeight: 'bold', fontSize: '0.95rem', margin: '12px 0' }}>
             Toque no botão abaixo para marcar sua presença hoje:
           </p>
 
@@ -121,8 +142,8 @@ export default function App() {
             onClick={() => setEtapa(3)}
             style={{
               width: '100%',
-              padding: '14px',
-              fontSize: '1.15rem',
+              padding: '12px',
+              fontSize: '1.05rem',
               fontWeight: 'bold',
               backgroundColor: '#064e3b',
               color: '#ffffff',
@@ -143,43 +164,46 @@ export default function App() {
             backgroundColor: '#064e3b',
             color: '#ffffff',
             borderRadius: '12px',
-            padding: '24px 16px',
+            padding: '16px 12px',
             textAlign: 'center',
-            marginBottom: '20px'
+            marginBottom: '12px'
           }}>
             <div style={{
-              width: '60px',
-              height: '60px',
+              width: '48px',
+              height: '48px',
               backgroundColor: '#eab308',
               borderRadius: '50%',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              margin: '0 auto 12px',
-              fontSize: '2rem',
+              margin: '0 auto 8px',
+              fontSize: '1.5rem',
               fontWeight: 'bold',
               color: '#000'
             }}>
               ✓
             </div>
-            <h2 style={{ margin: '0 0 12px', fontSize: '1.3rem' }}>Presença Confirmada com Sucesso!</h2>
-            <p style={{ margin: 0, fontSize: '0.95rem', lineHeight: '1.3' }}>
+            <h2 style={{ margin: '0 0 6px', fontSize: '1.1rem' }}>Presença Confirmada com Sucesso!</h2>
+            <p style={{ margin: 0, fontSize: '0.85rem', lineHeight: '1.2' }}>
               Sua presença já está salva na lista oficial da Associação.
             </p>
           </div>
 
           <div style={cardStyle}>
-            <p style={{ margin: '6px 0', fontSize: '0.95rem' }}><strong>Comprovante Nº:</strong> PRES-2026-1014</p>
-            <p style={{ margin: '6px 0', fontSize: '0.95rem' }}><strong>Data:</strong> 14/10/2026 às 14:05</p>
-            <p style={{ margin: '6px 0', fontSize: '0.95rem' }}><strong>Status:</strong> Registrado no Banco de Dados</p>
+            <p style={{ margin: '4px 0', fontSize: '0.85rem' }}><strong>Comprovante Nº:</strong> PRES-2026-1014</p>
+            <p style={{ margin: '4px 0', fontSize: '0.85rem' }}><strong>Data:</strong> 14/10/2026 às 14:05</p>
+            <p style={{ margin: '4px 0', fontSize: '0.85rem' }}><strong>Status:</strong> Registrado no Banco de Dados</p>
           </div>
 
           <button 
-            onClick={() => setEtapa(1)}
+            onClick={() => {
+              setCpf('');
+              setEtapa(1);
+            }}
             style={{
               width: '100%',
-              padding: '14px',
-              fontSize: '1.1rem',
+              padding: '12px',
+              fontSize: '1.05rem',
               fontWeight: 'bold',
               backgroundColor: '#0d2948',
               color: '#ffffff',
