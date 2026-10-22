@@ -4,6 +4,9 @@ export default function App() {
   const [etapa, setEtapa] = useState(1);
   const [cpf, setCpf] = useState('');
 
+  // CPF padrão esperado (somente números)
+  const CPF_ALVO = '12345678900';
+
   const containerStyle = {
     fontFamily: 'Arial, sans-serif',
     width: '100%',
@@ -58,16 +61,16 @@ export default function App() {
   };
 
   const handleEntrar = () => {
-    // Remove pontos, traços e espaços digitados
-    const cpfApenasNumeros = cpf.replace(/\D/g, '');
+    // Remove qualquer caractere que NÃO seja número (pontos, traços, espaços)
+    const apenasNumeros = cpf.replace(/\D/g, '');
 
-    if (!cpfApenasNumeros) {
+    if (!apenasNumeros) {
       alert('Por favor, digite o seu CPF para entrar.');
       return;
     }
 
-    // Aceita 123.456.789-00 ou 12345678900
-    if (cpfApenasNumeros === '12345678900') {
+    // Compara apenas a sequência numérica
+    if (apenasNumeros === CPF_ALVO) {
       setEtapa(2);
     } else {
       alert('CPF não encontrado. Utilize o CPF cadastrado: 123.456.789-00');
