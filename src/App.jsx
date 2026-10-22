@@ -68,17 +68,17 @@ export default function App() {
       {/* TELA 1: Identificação do Idoso */}
       {etapa === 1 && (
         <main style={bodyStyle}>
-          <h2 style={{ fontSize: '1.2rem', color: '#000', marginTop: 0, marginBottom: '12px' }}>
+          <h2 style={{ fontSize: '1.2rem', color: '#000000', marginTop: 0, marginBottom: '12px' }}>
             Identificação do Idoso
           </h2>
           
           <div style={cardStyle}>
             <h3 style={{ margin: '0 0 6px', color: '#0d2948', fontSize: '1.05rem' }}>Oficina de Hoje</h3>
-            <p style={{ margin: '4px 0', fontSize: '0.9rem' }}><strong>Atividade:</strong> Inclusão Digital Prática</p>
-            <p style={{ margin: '4px 0', fontSize: '0.9rem' }}><strong>Horário:</strong> 14:00 às 15:30</p>
+            <p style={{ margin: '4px 0', fontSize: '0.9rem', color: '#000000' }}><strong>Atividade:</strong> Inclusão Digital Prática</p>
+            <p style={{ margin: '4px 0', fontSize: '0.9rem', color: '#000000' }}><strong>Horário:</strong> 14:00 às 15:30</p>
           </div>
 
-          <label style={{ display: 'block', fontWeight: 'bold', marginBottom: '6px', fontSize: '1rem' }}>
+          <label style={{ display: 'block', fontWeight: 'bold', marginBottom: '6px', fontSize: '1rem', color: '#000000' }}>
             Digite seu CPF:
           </label>
           <input 
@@ -89,7 +89,9 @@ export default function App() {
             style={{
               width: '100%',
               padding: '12px',
-              fontSize: '1rem',
+              fontSize: '1.1rem',
+              fontWeight: 'bold',
+              color: '#000000',
               borderRadius: '8px',
               border: '2px solid #0d2948',
               boxSizing: 'border-box',
@@ -123,18 +125,18 @@ export default function App() {
       {/* TELA 2: Confirmar Presença */}
       {etapa === 2 && (
         <main style={bodyStyle}>
-          <h2 style={{ fontSize: '1.2rem', color: '#000', marginTop: 0, marginBottom: '12px' }}>
+          <h2 style={{ fontSize: '1.2rem', color: '#000000', marginTop: 0, marginBottom: '12px' }}>
             Olá, Dona Maria!
           </h2>
           
           <div style={{ ...cardStyle, borderColor: '#0d2948', borderWidth: '2px' }}>
             <h3 style={{ margin: '0 0 6px', color: '#0d2948', fontSize: '1.05rem' }}>Oficina do Dia</h3>
-            <p style={{ margin: '4px 0', fontSize: '0.9rem' }}><strong>Atividade:</strong> Redes Sociais e Segurança</p>
-            <p style={{ margin: '4px 0', fontSize: '0.9rem' }}><strong>Horário:</strong> 14:00 às 15:30</p>
-            <p style={{ margin: '4px 0', fontSize: '0.9rem' }}><strong>Local:</strong> Sala de Informática</p>
+            <p style={{ margin: '4px 0', fontSize: '0.9rem', color: '#000000' }}><strong>Atividade:</strong> Redes Sociais e Segurança</p>
+            <p style={{ margin: '4px 0', fontSize: '0.9rem', color: '#000000' }}><strong>Horário:</strong> 14:00 às 15:30</p>
+            <p style={{ margin: '4px 0', fontSize: '0.9rem', color: '#000000' }}><strong>Local:</strong> Sala de Informática</p>
           </div>
 
-          <p style={{ textAlign: 'center', fontWeight: 'bold', fontSize: '0.95rem', margin: '12px 0' }}>
+          <p style={{ textAlign: 'center', fontWeight: 'bold', fontSize: '0.95rem', margin: '12px 0', color: '#000000' }}>
             Toque no botão abaixo para marcar sua presença hoje:
           </p>
 
@@ -179,7 +181,7 @@ export default function App() {
               margin: '0 auto 8px',
               fontSize: '1.5rem',
               fontWeight: 'bold',
-              color: '#000'
+              color: '#000000'
             }}>
               ✓
             </div>
@@ -190,9 +192,9 @@ export default function App() {
           </div>
 
           <div style={cardStyle}>
-            <p style={{ margin: '4px 0', fontSize: '0.85rem' }}><strong>Comprovante Nº:</strong> PRES-2026-1014</p>
-            <p style={{ margin: '4px 0', fontSize: '0.85rem' }}><strong>Data:</strong> 14/10/2026 às 14:05</p>
-            <p style={{ margin: '4px 0', fontSize: '0.85rem' }}><strong>Status:</strong> Registrado no Banco de Dados</p>
+            <p style={{ margin: '4px 0', fontSize: '0.85rem', color: '#000000' }}><strong>Comprovante Nº:</strong> PRES-2026-1014</p>
+            <p style={{ margin: '4px 0', fontSize: '0.85rem', color: '#000000' }}><strong>Data:</strong> 14/10/2026 às 14:05</p>
+            <p style={{ margin: '4px 0', fontSize: '0.85rem', color: '#000000' }}><strong>Status:</strong> Registrado no Banco de Dados</p>
           </div>
 
           <button 
