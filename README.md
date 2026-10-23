@@ -14,7 +14,7 @@ O **Idosos Digitais** foi desenhado com foco estrito na experiência do usuário
 ### ✨ Funcionalidades Principais
 * **Fluxo em 3 Etapas Claras:** Identificação por CPF, Tela de Confirmação Personalizada e Comprovante de Presença Digital.
 * **Validação Flexível de CPF:** Permite digitação com ou sem pontuação (`123.456.789-00` ou `12345678900`).
-* **Navegação Acessível:** Suporte completo a leitores de tela (`aria-live`, `role="status"`) e navegação por teclado (tecla **Enter**).
+* **Navegação Acessível:** Suporte a leitores de tela (`aria-live`, `role="status"`) e botões com áreas de toque ampliadas.
 * **Layout Fixo e Estável (380px x 620px):** Projeta uma interface padronizada que se mantém idêntica no Google Chrome, Microsoft Edge e Safari, bloqueando distorções em janelas privadas/incógnitas.
 
 ---
