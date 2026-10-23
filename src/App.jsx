@@ -133,7 +133,7 @@ export default function App() {
         </p>
       </header>
 
-      {/* TELA 1: Identificação do Idoso (Com formulário nativo para suporte total ao Enter) */}
+      {/* TELA 1: Identificação do Idoso */}
       {etapa === 1 && (
         <main style={bodyStyle} aria-live="polite">
           <form onSubmit={handleEntrar} style={{ display: 'flex', flexDirection: 'column', height: '100%', justifyContent: 'space-between' }}>
@@ -159,6 +159,7 @@ export default function App() {
                 onChange={(e) => setCpf(e.target.value)}
                 style={inputStyle}
                 aria-label="Campo para digitar o CPF"
+                autoComplete="off"
                 autoFocus
               />
             </div>
