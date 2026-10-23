@@ -1,8 +1,13 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function App() {
   const [etapa, setEtapa] = useState(1);
   const [cpf, setCpf] = useState('');
+
+  // Força o campo a iniciar limpo, ignorando tentativas de autofill do navegador
+  useEffect(() => {
+    setCpf('');
+  }, []);
 
   const CPF_ALVO = '12345678900';
 
@@ -105,7 +110,7 @@ export default function App() {
   });
 
   const handleEntrar = (e) => {
-    if (e) e.preventDefault(); // Previne o recarregamento da página ao enviar o formulário
+    if (e) e.preventDefault();
 
     const apenasNumeros = cpf.replace(/\D/g, '');
 
@@ -153,13 +158,16 @@ export default function App() {
               </label>
               <input 
                 id="input-cpf"
+                name="cpf_no_autofill"
                 type="text" 
                 placeholder="123.456.789-00"
                 value={cpf}
                 onChange={(e) => setCpf(e.target.value)}
                 style={inputStyle}
                 aria-label="Campo para digitar o CPF"
-                autoComplete="off"
+                autoComplete="new-password"
+                autoCorrect="off"
+                spellCheck="false"
                 autoFocus
               />
             </div>
