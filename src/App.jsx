@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';  // Pull Request: Auto-revisão técnica de acessibilidade e layout PWA
 
 export default function App() {
   const [etapa, setEtapa] = useState(1);
