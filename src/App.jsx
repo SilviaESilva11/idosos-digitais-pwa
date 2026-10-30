@@ -160,6 +160,8 @@ export default function App() {
                 id="input-cpf"
                 name="cpf_no_autofill"
                 type="text" 
+                inputMode="numeric"
+                pattern="[0-9]*"
                 placeholder="123.456.789-00"
                 value={cpf}
                 onChange={(e) => setCpf(e.target.value)}
